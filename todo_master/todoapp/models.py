@@ -3,8 +3,8 @@ from userapp.models import User
 
 
 class Project(models.Model):
-    name = models.CharField(max_length=64)
-    file_link = models.URLField(max_length=200, null=True, blank=True)
+    name = models.CharField(max_length=64, unique=True)
+    file_link = models.URLField(max_length=200, blank=True)
     users = models.ManyToManyField(User)
 
     def __str__(self):
@@ -18,4 +18,6 @@ class Todo(models.Model):
     date_update = models.DateField(auto_now=True)
     user_creator = models.ForeignKey(User, on_delete=models.PROTECT)
     active_or_close = models.BooleanField(default=True)
+
+
 
