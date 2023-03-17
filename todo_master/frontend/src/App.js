@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './logo.svg';
+import logo from './logo.svg';
 import './App.css';
 import UserList from './components/User.js';
 import Menu from './components/Menu.js';
