@@ -15,7 +15,6 @@ class ProjectModelSerializer(ModelSerializer):
         fields = '__all__'
 
 
-
 class TodoModelSerializer(ModelSerializer):
     #user = UserModelSerializer
 
