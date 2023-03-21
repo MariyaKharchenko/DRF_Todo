@@ -42,6 +42,7 @@ const UserList = ({userapp}) => {
                 email
             </th>
             {userapp.map((user) => <UserItem user={user}/>)}
+            console.log(Array.isArray(userapp));
         </table>
     )
 }

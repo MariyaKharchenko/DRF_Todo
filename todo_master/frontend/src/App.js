@@ -3,8 +3,11 @@ import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 import UserList from './components/User.js';
+import ProjectList from './components/Project.js';
+import TodotList from './components/Todo.js';
 import Menu from './components/Menu.js';
 import Footer from './components/Footer.js';
+import{Route, BrowserRouter, Link} from 'react-router-dom'
 
 
 const DOMAIN = 'http://127.0.0.1:8000/api'
@@ -15,49 +18,51 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            'userapp': []
+            'userapp': [],
+            'projects': [],
+            'todo': []
         }
     }
 
     componentDidMount() {
 
-        /*const userapp = [
-            {
-            'username': 'Василисушка',
-            'first_name': 'Василиса',
-            'last_name': 'Прекрасная',
-            'email': 'Vasilisa@mail.ru'
-            },
-            {
-            'username': 'Серый@',
-            'first_name': 'Волк',
-            'last_name': 'Серый',
-            'email': 'Seriiy@gav.me'
-            }
-        ] */
         axios.get(get_url('/userapp')).then(response => {
             this.setState({'userapp': response.data})
+            }).catch(error => console.log(error))
+
+        axios.get(get_url('/projects')).then(response => {
+            this.setState({'projects': response.data})
+            }).catch(error => console.log(error))
+
+        axios.get(get_url('/todo')).then(response => {
+            this.setState({'todo': response.data})
             }).catch(error => console.log(error))
 
         }
 
     render() {
         return (
-            <div>
+            <BrowserRouter>
                 <div>
-                    <header>
-                        <Menu/>
-                    </header>
+                    <div>
+                        <header>
+                            <Menu/>
+                        </header>
+                    </div>
+                    <div>
+
+                        <Route exact path='/'component={() => <UserList userapp={this.state.userapp}/>}/>
+                        <Route exact path='/projects'component={() => <ProjectList projects={this.state.projects}/>}/>
+                        <Route exact path='/todo' component={() => <TodotList todo={this.state.todo}/>}/>
+
+                    </div>
+                    <div>
+                        <footer>
+                            <Footer/>
+                        </footer>
+                    </div>
                 </div>
-                <div>
-                    <UserList userapp={this.state.userapp}/>
-                </div>
-                <div>
-                    <footer>
-                        <Footer/>
-                    </footer>
-                </div>
-            </div>
+            </BrowserRouter>
         );
     }
 }
