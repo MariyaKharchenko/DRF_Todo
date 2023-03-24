@@ -1,8 +1,9 @@
 import React from 'react';
+import UserItem from './User.js'
 
 
 
-const TotoItem = ({todo}) => {
+const TotoItem = ({todo, userapp}) => {
 
     return(
         <tr>

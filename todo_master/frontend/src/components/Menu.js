@@ -10,9 +10,9 @@ export default function Menu() {
         <nav class='top-menu'>
             <a class='navbar-logo' href='#'><img src='../logo.svg' alt='Этот логотип не загрузился'/></a>
             <ul class='menu-main'>
-                <li><Link to='/'>Users</Link></li>
-                <li><Link to='/projects'>Projects</Link></li>
-                <li><Link to='/todo'>Todo</Link></li>
+                <li><a href='/'>Users</a></li>
+                <li><a href='/projects'>Projects</a></li>
+                <li><a href='/todo'>Todo</a></li>
             </ul>
         </nav>
     )

@@ -1,8 +1,11 @@
-const NotFound = () => {
-    return
+import React from 'react';
+
+const NotFound = ({location}) => {
+    return (
         <div>
-            <span>Такой страницы не существует. <a href='/'>Вернитесь на главную страницу.</a>
+            <span>Такой страницы не существует. <a href='/'>Вернитесь на главную страницу.</a></span>
         </div>
+    )
 }
 
-export {NotFound};
+export default NotFound;
