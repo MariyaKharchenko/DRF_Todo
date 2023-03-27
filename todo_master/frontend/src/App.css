@@ -69,6 +69,19 @@
   color: #F73E24;
   transition:.3s linear;
 }
+.menu-main button {
+  text-decoration: none;
+  display: block;
+  position: relative;
+  margin-left: 20px;
+  margin-bottom: -6px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-family: 'Arimo', sans-serif;
+  font-weight: bold;
+  color: #F73E24;
+  transition:.3s linear;
+}
 .menu-main a:before {
   content: "";
   width: 9px;
