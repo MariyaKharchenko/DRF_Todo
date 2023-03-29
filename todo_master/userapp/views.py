@@ -6,13 +6,18 @@ from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly, IsA
 
 
 from .models import User
-from .serializers import UserModelSerializer
+from .serializers import UserModelSerializer, UserBaseModelSerializer
 
 
 class UserModelViewSet (ModelViewSet):
     #permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
-    serializer_class = UserModelSerializer
+    #serializer_class = UserModelSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == '2.0':
+            return UserBaseModelSerializer
+        return UserModelSerializer
 
 
 

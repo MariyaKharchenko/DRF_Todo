@@ -18,9 +18,21 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
 
 from userapp.views import UserModelViewSet
 from todoapp.views import ProjectModelViewSet, TodoModelViewSet
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title='todo_master',
+        default_version='2.0',
+        description='Todo_project',
+        license=openapi.License(name='MT')
+    ),
+    public=True
+)
 
 router = DefaultRouter()
 router.register('userapp', UserModelViewSet)
@@ -33,4 +45,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
     path('api-token-auth/', views.obtain_auth_token),
+
+    path('swagger<str:format>', schema_view.without_ui()),
 ]
