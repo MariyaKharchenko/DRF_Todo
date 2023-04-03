@@ -61,6 +61,27 @@ class App extends React.Component {
         return headers
     }
 
+    createProject(name, users){
+
+    }
+
+    createTodo(project, text_todo, user_creator){
+
+    }
+
+    deleteProject(id){
+        const headers = this.get_headers()
+        axios.delete(get_url(`/project/${id}`), {headers}).then(response => {
+            this.load_data()
+            }).catch(error => console.log(error))
+    }
+
+    deleteTodo(id){
+        const headers = this.get_headers()
+        axios.delete(get_url(`/todo/${id}`), {headers}).then(response => {
+            this.setState({todo: this.state.todo.filter((todo)=>todo.id !== id)})
+            }).catch(error => console.log(error))
+    }
     load_data() {
         const headers = this.get_headers()
         axios.get(get_url('/userapp'), {headers}).then(response => {
@@ -106,9 +127,9 @@ class App extends React.Component {
                     <div>
                         <Switch>
                             <Route exact path='/' component={() => <UserList userapp={this.state.userapp}/>}/>
-                            <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects}/>}/>
-                            <Route exact path='/todo' component={() => <TodotList todo={this.state.todo}/>}/>
-                            <Route exact path='/login' component={() => <LoginForm get_token={(username, password) => this.get_token(username, password)}/>}/>
+                            <Route exact path='/projects' component={() => <ProjectList projects={this.state.projects} deleteProject={(id) => this.deleteProject(id)}/>}/>
+                            <Route exact path='/todo' component={() => <TodotList todo={this.state.todo} deleteTodo={(id) => this.deleteTodo(id)}/>}/>
+                            <Route exact path='/login' component={() => <LoginForm get_token={(username, password) => this.get_token(username, password) }/>}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </div>

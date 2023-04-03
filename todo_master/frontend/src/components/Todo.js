@@ -3,11 +3,14 @@ import UserItem from './User.js'
 
 
 
-const TotoItem = ({todo, userapp}) => {
+
+const TotoItem = ({todo, deleteTodo}) => {
 
     return(
         <tr>
-
+            <td>
+                {todo.id}
+            </td>
             <td>
                 {todo.project}
             </td>
@@ -26,13 +29,14 @@ const TotoItem = ({todo, userapp}) => {
             <td>
                 {todo.closed}
             </td>
+            <td><button onClick={()=>deleteTodo(todo.id)} type='button'>Delete</button></td>
 
         </tr>
 
     )
 }
 
-const TodotList = ({todo}) => {
+const TodotList = ({todo, deleteTodo}) => {
 
     return(
         <table>
@@ -54,8 +58,9 @@ const TodotList = ({todo}) => {
             <th>
                 closed
             </th>
+            <th></th>
 
-            {todo.map((todo) => <TotoItem todo={todo}/>)}
+            {todo.map((todo) => <TotoItem todo={todo} deleteTodo={deleteTodo}/>)}
         </table>
     )
 }
