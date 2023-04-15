@@ -17,7 +17,7 @@ class Todo(models.Model):
     date_create = models.DateField(auto_now_add=True)
     date_update = models.DateField(auto_now=True)
     user_creator = models.ForeignKey(User, on_delete=models.PROTECT)
-    closed = models.BooleanField(default=True)
+    closed = models.BooleanField(default=False)
 
 
 
