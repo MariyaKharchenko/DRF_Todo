@@ -1,7 +1,6 @@
 from django.db import models
 from userapp.models import User
 
-
 class Project(models.Model):
     name = models.CharField(max_length=64, unique=True)
     file_link = models.URLField(max_length=200, blank=True)
@@ -17,7 +16,7 @@ class Todo(models.Model):
     date_create = models.DateField(auto_now_add=True)
     date_update = models.DateField(auto_now=True)
     user_creator = models.ForeignKey(User, on_delete=models.PROTECT)
-    closed = models.BooleanField(default=True)
+    closed = models.BooleanField(default=False)
 
 
 

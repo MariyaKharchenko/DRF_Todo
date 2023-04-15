@@ -1,5 +1,6 @@
 import React from 'react';
-import UserItem from './User.js'
+import UserItem from './User.js';
+import{Link} from 'react-router-dom';
 
 
 
@@ -39,29 +40,32 @@ const TotoItem = ({todo, deleteTodo}) => {
 const TodotList = ({todo, deleteTodo}) => {
 
     return(
-        <table>
-            <th>
-                project
-            </th>
-            <th>
-                text_todo
-            </th>
-            <th>
-                user_creator
-            </th>
-            <th>
-                date_create
-            </th>
-            <th>
-                date_update
-            </th>
-            <th>
-                closed
-            </th>
-            <th></th>
+        <div>
+            <table>
+                <th>
+                    project
+                </th>
+                <th>
+                    text_todo
+                </th>
+                <th>
+                    user_creator
+                </th>
+                <th>
+                    date_create
+                </th>
+                <th>
+                    date_update
+                </th>
+                <th>
+                    closed
+                </th>
+                <th></th>
 
-            {todo.map((todo) => <TotoItem todo={todo} deleteTodo={deleteTodo}/>)}
-        </table>
+                {todo.map((todo) => <TotoItem todo={todo} deleteTodo={deleteTodo}/>)}
+            </table>
+            <Link to='/todo/create'>Create</Link>
+        </div>
     )
 }
 

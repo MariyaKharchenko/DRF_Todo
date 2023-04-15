@@ -32,7 +32,7 @@ class ProjectModelViewSet(ModelViewSet):
 
 class TodoModelViewSet(ModelViewSet):
     #renderer_classes = [JSONRenderer]
-    queryset = Todo.objects.all()
+    queryset = Todo.objects.filter(closed=False).all()
     serializer_class = TodoModelSerializer
     pagination_class = TodoPageNumberPagination
     filterset_class = TodoFilter

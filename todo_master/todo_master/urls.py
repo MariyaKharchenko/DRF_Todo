@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
@@ -49,4 +50,5 @@ urlpatterns = [
 
     path('swagger<str:format>', schema_view.without_ui()),
     path("graphql/", GraphQLView.as_view(graphiql=True)),
+    path('',TemplateView.as_view(template_name='index.html')),
 ]

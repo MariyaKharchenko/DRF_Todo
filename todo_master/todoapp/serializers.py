@@ -10,6 +10,7 @@ class ProjectModelSerializer(ModelSerializer):
     file_link = HyperlinkedRelatedField
     user = UserModelSerializer
 
+
     class Meta:
         model = Project
         fields = '__all__'
