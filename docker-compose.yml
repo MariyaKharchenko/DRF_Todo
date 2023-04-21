@@ -1,0 +1,23 @@
+version: '3.1'
+
+
+services:
+  db:
+    image: postgres:13.10-alpine
+    privileged: true
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: super
+      POSTGRES_PASSWORD: 1
+      POSTGRES_DB: db
+#  backend:
+#    build:
+#      ./todo_master
+#    privileged: true
+#    ports:
+#      - 8080:8080
+#    command:
+#      bash -c 'python manage.py migrate && python manage.py create_user && python manage.py runserver localhost:8080'
+#    depends_on:
+#      - db
