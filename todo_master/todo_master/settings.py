@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%fuowx-pwfs+5-wi_f!l6&ua0&n&x6(-7tv8mbhk6yjnm1e=gz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'drf_yasg',
     'graphene_django',
+
 ]
 
 MIDDLEWARE = [
