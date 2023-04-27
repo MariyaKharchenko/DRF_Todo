@@ -11,14 +11,16 @@ class Command(BaseCommand):
         #     pass
         # else:
         #     User.objects.create_superuser(username='super', email='super@gmail.com', password='1')
-        data_user = {
-            'username': 'Ivan',
-            'first_name': 'Ivan',
-            'last_name': 'Ivanov',
-            'email': 'ivanushka@mail.ru'
-        }
-        user = User.objects.create(**data_user)
+        # data_user = {
+        #     'username': 'Ivan',
+        #     'first_name': 'Ivan',
+        #     'last_name': 'Ivanov',
+        #     'email': 'ivanushka@mail.ru'
+        # }
+        # user = User.objects.create(**data_user)
+        User.objects.create_superuser(username='super', email='super@gmail.com', password='1')
 
+        user = User.objects.filter(username='super').get()
         # data_project = {
         #     'name': 'project3880',
         #     'file_link': '',

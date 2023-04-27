@@ -11,13 +11,27 @@ services:
       POSTGRES_USER: super
       POSTGRES_PASSWORD: 1
       POSTGRES_DB: db
-#  backend:
-#    build:
-#      ./todo_master
-#    privileged: true
-#    ports:
-#      - 8080:8080
-#    command:
-#      bash -c 'python manage.py migrate && python manage.py create_user && python manage.py runserver localhost:8080'
-#    depends_on:
-#      - db
+  backend:
+    build:
+      ./todo_master
+    privileged: true
+    ports:
+      - 8080:8080
+    command:
+      bash -c 'python manage.py migrate && python manage.py create_user && gunicorn todo_master.wsgi -b 0.0.0.0:8080'
+    depends_on:
+      - db
+  nginx:
+    build:
+      ./nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - backend
+  frontend:
+    build:
+      ./frontend
+    ports:
+      - 432:80
+    depends_on:
+      - nginx
